@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import { AllTasks } from "./Tasks/TasksView.jsx";
+
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -13,7 +15,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           index
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-              <h1>Hello</h1>
+              <AllTasks/>
             </AuthorizedRoute>
           }
         />
