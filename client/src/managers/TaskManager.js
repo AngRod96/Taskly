@@ -15,3 +15,10 @@ export const createTask = (task) =>
         });
     
 }
+
+export const deleteTask = (taskId) => 
+{
+    return fetch(`/api/tasks/${taskId}`,
+        {method: "DELETE"})
+    
+}

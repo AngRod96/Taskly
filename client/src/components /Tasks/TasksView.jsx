@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { getAllTasks } from "../../managers/TaskManager.js"
+import { deleteTask, getAllTasks } from "../../managers/TaskManager.js"
 import { Link } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 
 
@@ -11,6 +12,19 @@ export const AllTasks = () => {
     {
         getAllTasks().then(setTasks);
     }, [])
+
+    const handleDelete = async (taskId) => {
+        if (window.confirm("Are you sure you want to delete this task?")) {
+            try {
+                await deleteTask(taskId)
+                Navigate("/");
+            } catch (error)
+            {
+                console.error("error deleting task", error)
+            }
+        }
+        }
+    
 
     return (
         <div>
@@ -28,7 +42,7 @@ export const AllTasks = () => {
                             <p>Completed: {task.completedTask ? 'yes' : 'No'}</p>
                             <p>Important: {task.isImportantTask ? 'Yes' : 'No'}</p>
                             <p>Date: {new Date(task.date).toLocaleString()}</p>
-                            <button>Delete</button>
+                                    <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
                         </li>   
                         </>
                         
@@ -38,7 +52,7 @@ export const AllTasks = () => {
             )}
               <Link to="/create-Task">
                                 <button>Add Task</button>
-                                </Link>      
+                </Link>      
             
         </div>
     );
