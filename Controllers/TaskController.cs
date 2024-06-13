@@ -79,6 +79,23 @@ namespace Taskly.Controllers
             return Ok(task);
         }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult DeleteTask(int id)
+        {
+            TaskObj taskToDelete = _dbContext.Tasks.FirstOrDefault(t => t.Id == id);
+
+            if(taskToDelete == null)
+            {
+                return BadRequest();
+            }
+
+            _dbContext.Tasks.Remove(taskToDelete);
+            _dbContext.SaveChanges();
+
+            return NoContent();
+        }
+        
     }
 
 }
