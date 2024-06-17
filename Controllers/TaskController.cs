@@ -1,8 +1,10 @@
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks.Sources;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,12 +28,13 @@ namespace Taskly.Controllers
             _dbContext = dbContext;
         }
 
-        [HttpGet]
-        public IActionResult GetAllTasks()
+        [HttpGet("{id}/task")]
+        public IActionResult GetAllTasks(int id)
         {
             return Ok(
                 _dbContext
                 .Tasks
+                .Where(t => t.UserId == id)
                 .Select(t => new TaskObjDTO
                 {
                     Id = t.Id,
@@ -49,7 +52,7 @@ namespace Taskly.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateATask( CreateTasktDTO taskPosted)
+        public IActionResult CreateATask(CreateTasktDTO taskPosted)
         {
             TaskObj task = new TaskObj
             {
@@ -72,20 +75,19 @@ namespace Taskly.Controllers
                     CategoryId = CategoryId
                 };
                 _dbContext.TaskCategories.Add(newTasks);
-            
+
             }
             _dbContext.SaveChanges();
 
             return Ok(task);
         }
 
-        [HttpDelete]
-        [Route("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTask(int id)
         {
             TaskObj taskToDelete = _dbContext.Tasks.FirstOrDefault(t => t.Id == id);
 
-            if(taskToDelete == null)
+            if (taskToDelete == null)
             {
                 return BadRequest();
             }
@@ -95,7 +97,110 @@ namespace Taskly.Controllers
 
             return NoContent();
         }
-        
+
+        [HttpPut("{id}")]
+
+        public IActionResult EditTask(int id, [FromBody] CreateTasktDTO editTask)
+        {
+            TaskObj taskToEdit = _dbContext.Tasks
+                 .FirstOrDefault(t => t.Id == id);
+
+            if (taskToEdit == null)
+            {
+                return BadRequest("Task not found");
+            }
+
+            taskToEdit.Title = editTask.Title;
+            taskToEdit.Description = editTask.Description;
+            taskToEdit.CompletedTask = editTask.CompletedTask;
+            taskToEdit.IsImportantTask = editTask.IsImportantTask;
+
+            List<TaskCategories> tasksCategoriesToRemove = _dbContext.TaskCategories.Where(t => t.TaskId == id).ToList();
+
+            foreach ( TaskCategories taskCategory in tasksCategoriesToRemove) 
+            {
+                _dbContext.TaskCategories.Remove(taskCategory);
+            }
+
+            _dbContext.SaveChanges();
+
+            foreach(int CategoryId in editTask.CategoryIds)
+            {
+                _dbContext.TaskCategories.Add(new TaskCategories()
+                {
+                    TaskId = taskToEdit.Id, CategoryId = CategoryId
+                });
+            }
+
+            _dbContext.SaveChanges();
+
+            return Ok(taskToEdit);
+        }
+
+
+        [HttpGet("{id}")]
+
+        public IActionResult GetTaskById(int id)
+        {
+            TaskObj taskById = _dbContext.Tasks
+            .Include(t => t.TaskCategories)
+            .ThenInclude(t => t.Category)
+            .FirstOrDefault(t => t.Id == id);
+
+            if (taskById == null)
+            {
+                return NotFound("The task wasnt found");
+            }
+            return Ok(
+                new TaskObjDTO
+                {
+                    Title = taskById.Title,
+                    Id = taskById.Id,
+                    Description = taskById.Description,
+                    CompletedTask = taskById.CompletedTask,
+                    Date = DateTime.Now,
+                    IsImportantTask = taskById.IsImportantTask,
+                    UserId = taskById.UserId,
+                    TaskCategories = taskById.TaskCategories
+                }
+            );
+
+        }
+
+        // [HttpGet("{UserId}")]
+
+        // public IActionResult GetTasksByUserId(int UserId)
+        // {
+        //      List<TaskObj> tasks = _dbContext.Tasks
+        //         .Where(t => t.UserId == UserId)
+        //         .Include(t => t.TaskCategories)
+        //         .ThenInclude(tc => tc.Category)
+        //         .ToList();
+
+        //     if (tasks == null || tasks.Count == 0)
+        //     {
+        //         return NotFound("No tasks found for the specified user.");
+        //     }
+
+        //     List<TaskObjDTO> taskDTO = tasks.Select(t => new TaskObjDTO
+        //     {
+        //         Id = t.Id,
+        //         UserId = t.UserId,
+        //         Title = t.Title,
+        //         Description = t.Description,
+        //         Date = t.Date,
+        //         CompletedTask = t.CompletedTask,
+        //         IsImportantTask = t.IsImportantTask,
+        //         TaskCategories = t.TaskCategories.Select(tc => tc.CategoryId).ToList()
+        //     }).ToList();
+
+        //     return Ok(taskDTO);
+        // }
+
+   
+
+
     }
+
 
 }

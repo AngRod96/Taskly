@@ -12,7 +12,7 @@ using Taskly.Data;
 namespace Taskly.Migrations
 {
     [DbContext(typeof(TasklyDbContext))]
-    [Migration("20240611165151_InitialCreate")]
+    [Migration("20240614144210_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -152,13 +152,13 @@ namespace Taskly.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "28d8ce77-d0cb-410f-af83-1bf9c4439841",
+                            ConcurrencyStamp = "be06cc60-9824-41a5-bf8d-413ca9570ece",
                             Email = "AngRod@icloud.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEG9r6z73JU/ohBlXaj1TRBV93ZYkuTKoDRSvHW1MdXjPuhn/i4CpvxDKhdp6pRaFDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL3NlbjKvSwr7gHXoUbPwJpXN/yM/CwJvzwzwGcixqBIhwOAjCkd5oSm/naQdvTYxA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a872a466-25ce-407e-8146-5e50698913a1",
+                            SecurityStamp = "2b03a622-9fac-4a10-a5d6-f01dec93372b",
                             TwoFactorEnabled = false,
                             UserName = "AngRod"
                         },
@@ -166,13 +166,13 @@ namespace Taskly.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916bb6g",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "956a7d92-08d1-43ff-a6ce-a0d36ec0f8d2",
+                            ConcurrencyStamp = "929b606a-13fc-4631-91b9-36a0d65d7bde",
                             Email = "Jramirez@icloud.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEOBjlD3QFBxOfWzmImQ+CMHl2FlrfHLOEOZ1gnK7ds71d2aUd4bfnhjUPz2V58ad6A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECTrvsiidOU8Zf056zJLee2RaOFpHgL50+WMzUigKlRsWIIr07xysKEiFbNHdr/XTA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0781f491-f6ab-433e-bdc7-95eecac09f31",
+                            SecurityStamp = "b4bf1f2d-bc23-477f-b0f3-5563a9ab9360",
                             TwoFactorEnabled = false,
                             UserName = "JRamirez"
                         });
@@ -414,7 +414,7 @@ namespace Taskly.Migrations
                         {
                             Id = 1,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(850),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4540),
                             Description = "Create a responsive landing page for the website.",
                             IsImportantTask = true,
                             Title = "Develop Landing Page",
@@ -424,7 +424,7 @@ namespace Taskly.Migrations
                         {
                             Id = 2,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(950),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4590),
                             Description = "Resolve the issue with the user authentication module.",
                             IsImportantTask = false,
                             Title = "Fix Backend Bug",
@@ -434,7 +434,7 @@ namespace Taskly.Migrations
                         {
                             Id = 3,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(950),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600),
                             Description = "Pick up friend at 7am to get to the marathon on time",
                             IsImportantTask = true,
                             Title = "Nashville Marathon",
@@ -444,7 +444,7 @@ namespace Taskly.Migrations
                         {
                             Id = 4,
                             CompletedTask = true,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(960),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600),
                             Description = "Take Dogs to groomers at 11am",
                             IsImportantTask = false,
                             Title = "Dogs",
@@ -454,7 +454,7 @@ namespace Taskly.Migrations
                         {
                             Id = 5,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(970),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600),
                             Description = "Pick up son from moms house",
                             IsImportantTask = true,
                             Title = "Pick up son",
@@ -464,7 +464,7 @@ namespace Taskly.Migrations
                         {
                             Id = 6,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610),
                             Description = "Vacuum and dust all rooms.",
                             IsImportantTask = false,
                             Title = "Clean the House",
@@ -474,7 +474,7 @@ namespace Taskly.Migrations
                         {
                             Id = 7,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610),
                             Description = "Buy groceries for the week.",
                             IsImportantTask = true,
                             Title = "Grocery Shopping",
@@ -484,7 +484,7 @@ namespace Taskly.Migrations
                         {
                             Id = 8,
                             CompletedTask = true,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610),
                             Description = "Help son with his math homework.",
                             IsImportantTask = false,
                             Title = "Son's Homework",
@@ -494,7 +494,7 @@ namespace Taskly.Migrations
                         {
                             Id = 9,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(990),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620),
                             Description = "Prepare a special family dinner.",
                             IsImportantTask = true,
                             Title = "Family Dinner",
@@ -504,7 +504,7 @@ namespace Taskly.Migrations
                         {
                             Id = 10,
                             CompletedTask = true,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(990),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620),
                             Description = "Respond to work emails",
                             IsImportantTask = true,
                             Title = "Work Emails ",
@@ -514,7 +514,7 @@ namespace Taskly.Migrations
                         {
                             Id = 11,
                             CompletedTask = false,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(1020),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620),
                             Description = "Do the laundry for the week.",
                             IsImportantTask = true,
                             Title = "Laundry",
@@ -524,7 +524,7 @@ namespace Taskly.Migrations
                         {
                             Id = 12,
                             CompletedTask = true,
-                            Date = new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(1020),
+                            Date = new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4630),
                             Description = "Meet Jose at Avenue for morning run",
                             IsImportantTask = false,
                             Title = "Morning Run",

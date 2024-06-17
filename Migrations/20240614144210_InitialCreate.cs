@@ -246,8 +246,8 @@ namespace Taskly.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "28d8ce77-d0cb-410f-af83-1bf9c4439841", "AngRod@icloud.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEG9r6z73JU/ohBlXaj1TRBV93ZYkuTKoDRSvHW1MdXjPuhn/i4CpvxDKhdp6pRaFDg==", null, false, "a872a466-25ce-407e-8146-5e50698913a1", false, "AngRod" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916bb6g", 0, "956a7d92-08d1-43ff-a6ce-a0d36ec0f8d2", "Jramirez@icloud.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEOBjlD3QFBxOfWzmImQ+CMHl2FlrfHLOEOZ1gnK7ds71d2aUd4bfnhjUPz2V58ad6A==", null, false, "0781f491-f6ab-433e-bdc7-95eecac09f31", false, "JRamirez" }
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "be06cc60-9824-41a5-bf8d-413ca9570ece", "AngRod@icloud.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL3NlbjKvSwr7gHXoUbPwJpXN/yM/CwJvzwzwGcixqBIhwOAjCkd5oSm/naQdvTYxA==", null, false, "2b03a622-9fac-4a10-a5d6-f01dec93372b", false, "AngRod" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916bb6g", 0, "929b606a-13fc-4631-91b9-36a0d65d7bde", "Jramirez@icloud.com", false, false, null, null, null, "AQAAAAIAAYagAAAAECTrvsiidOU8Zf056zJLee2RaOFpHgL50+WMzUigKlRsWIIr07xysKEiFbNHdr/XTA==", null, false, "b4bf1f2d-bc23-477f-b0f3-5563a9ab9360", false, "JRamirez" }
                 });
 
             migrationBuilder.InsertData(
@@ -265,18 +265,18 @@ namespace Taskly.Migrations
                 columns: new[] { "Id", "CompletedTask", "Date", "Description", "IsImportantTask", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { 1, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(850), "Create a responsive landing page for the website.", true, "Develop Landing Page", 1 },
-                    { 2, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(950), "Resolve the issue with the user authentication module.", false, "Fix Backend Bug", 1 },
-                    { 3, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(950), "Pick up friend at 7am to get to the marathon on time", true, "Nashville Marathon", 1 },
-                    { 4, true, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(960), "Take Dogs to groomers at 11am", false, "Dogs", 1 },
-                    { 5, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(970), "Pick up son from moms house", true, "Pick up son", 1 },
-                    { 6, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980), "Vacuum and dust all rooms.", false, "Clean the House", 2 },
-                    { 7, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980), "Buy groceries for the week.", true, "Grocery Shopping", 2 },
-                    { 8, true, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(980), "Help son with his math homework.", false, "Son's Homework", 2 },
-                    { 9, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(990), "Prepare a special family dinner.", true, "Family Dinner", 1 },
-                    { 10, true, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(990), "Respond to work emails", true, "Work Emails ", 2 },
-                    { 11, false, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(1020), "Do the laundry for the week.", true, "Laundry", 2 },
-                    { 12, true, new DateTime(2024, 6, 11, 11, 51, 50, 203, DateTimeKind.Local).AddTicks(1020), "Meet Jose at Avenue for morning run", false, "Morning Run", 2 }
+                    { 1, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4540), "Create a responsive landing page for the website.", true, "Develop Landing Page", 1 },
+                    { 2, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4590), "Resolve the issue with the user authentication module.", false, "Fix Backend Bug", 1 },
+                    { 3, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600), "Pick up friend at 7am to get to the marathon on time", true, "Nashville Marathon", 1 },
+                    { 4, true, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600), "Take Dogs to groomers at 11am", false, "Dogs", 1 },
+                    { 5, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4600), "Pick up son from moms house", true, "Pick up son", 1 },
+                    { 6, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610), "Vacuum and dust all rooms.", false, "Clean the House", 2 },
+                    { 7, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610), "Buy groceries for the week.", true, "Grocery Shopping", 2 },
+                    { 8, true, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4610), "Help son with his math homework.", false, "Son's Homework", 2 },
+                    { 9, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620), "Prepare a special family dinner.", true, "Family Dinner", 1 },
+                    { 10, true, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620), "Respond to work emails", true, "Work Emails ", 2 },
+                    { 11, false, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4620), "Do the laundry for the week.", true, "Laundry", 2 },
+                    { 12, true, new DateTime(2024, 6, 14, 9, 42, 9, 803, DateTimeKind.Local).AddTicks(4630), "Meet Jose at Avenue for morning run", false, "Morning Run", 2 }
                 });
 
             migrationBuilder.InsertData(
