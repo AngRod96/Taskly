@@ -12,8 +12,10 @@ NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
 
-export default function NavBar({ loggedInUser, setLoggedInUser }) {
-const [open, setOpen] = useState(false);
+
+export default function NavBar({ loggedInUser, setLoggedInUser}) {
+    const [open, setOpen] = useState(false);
+
 
 const toggleNavbar = () => setOpen(!open);
 
@@ -32,9 +34,10 @@ return (
                         <NavLink tag={RRNavLink} to="/important">Important</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink tag={RRNavLink} to="/important">Completed</NavLink>
+                        <NavLink tag={RRNavLink} to="/complete">Completed</NavLink>
                     </NavItem>
-            </Collapse>
+                    </Collapse>
+
                   
             <Button
             color="primary"
@@ -66,3 +69,4 @@ return (
     </div>
 );
 }
+

@@ -9,7 +9,7 @@ public class TaskObjDTO
     public DateTime Date { get; set; }
     public bool CompletedTask { get; set; }
     public bool IsImportantTask { get; set; }
-    public List<TaskCategories> TaskCategories{ get; set; }
+    public List<TaskCategories>? TaskCategories{ get; set; }
 
     // public TaskObjDTO(TaskObj task)
     // {

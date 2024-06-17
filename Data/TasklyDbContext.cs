@@ -111,7 +111,6 @@ public class TasklyDbContext : IdentityDbContext<IdentityUser>
             .HasOne(tc => tc.Category)
             .WithMany(c => c.TaskCategories)
             .HasForeignKey(tc => tc.CategoryId);
-
     }
 
 }

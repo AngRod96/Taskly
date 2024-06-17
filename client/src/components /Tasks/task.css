@@ -1,0 +1,9 @@
+.new-card {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.card-component {
+   height: 400px;
+}

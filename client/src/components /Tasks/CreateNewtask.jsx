@@ -34,7 +34,7 @@ export const CreateTask = ({loggedInUser}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate("/")
+
 
         const taskData = {
             title : title,
@@ -46,7 +46,9 @@ export const CreateTask = ({loggedInUser}) => {
         };
 
         try {
-            createTask(taskData);
+            createTask(taskData).then(() => {
+                navigate("/")
+            }) ;
            
         } catch (error) {
             console.error("Error creating task:", error);
