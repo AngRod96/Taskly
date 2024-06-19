@@ -37,3 +37,8 @@ export const updateTask = async (id, taskData) => {
         body: JSON.stringify(taskData)
     })
 }
+
+export const getCompletedTasks = (id) =>
+{
+    return fetch(`/api/tasks/complete/${id}`).then(res => res.json())
+}
