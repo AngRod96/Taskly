@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks.Sources;
@@ -33,7 +34,8 @@ namespace Taskly.Controllers
         {
             return Ok(
                 _dbContext
-                .Tasks
+                .Tasks.Include(t => t.TaskCategories)
+                .ThenInclude(tc => tc.Category)
                 .Where(t => t.UserId == id)
                 .Select(t => new TaskObjDTO
                 {
@@ -41,7 +43,16 @@ namespace Taskly.Controllers
                     UserId = t.UserId,
                     Title = t.Title,
                     Description = t.Description,
-                    TaskCategories = t.TaskCategories,
+                    TaskCategories = t.TaskCategories.Select(tc => new TaskCategoriesDTO
+                    {
+                        CategoryId = tc.CategoryId,
+                        TaskId = tc. TaskId,
+                        Category = new CategoryDTO
+                        {
+                            Id = tc.Category.Id,
+                            CategoryName = tc.Category.CategoryName
+                        }
+                    }).ToList(),
                     IsImportantTask = t.IsImportantTask,
                     CompletedTask = t.CompletedTask
 
@@ -144,7 +155,7 @@ namespace Taskly.Controllers
         {
             TaskObj taskById = _dbContext.Tasks
             .Include(t => t.TaskCategories)
-            .ThenInclude(t => t.Category)
+                .ThenInclude(t => t.Category)
             .FirstOrDefault(t => t.Id == id);
 
             if (taskById == null)
@@ -161,41 +172,49 @@ namespace Taskly.Controllers
                     Date = DateTime.Now,
                     IsImportantTask = taskById.IsImportantTask,
                     UserId = taskById.UserId,
-                    TaskCategories = taskById.TaskCategories
+                    TaskCategories = taskById.TaskCategories.Select(tc => new TaskCategoriesDTO{
+                        CategoryId = tc.CategoryId,
+                        TaskId = tc.TaskId,
+                        Category = new CategoryDTO
+                        {
+                            Id = tc.CategoryId,
+                            CategoryName = tc.Category.CategoryName
+                        }
+                    }).ToList()
                 }
             );
 
         }
 
-        // [HttpGet("{UserId}")]
 
-        // public IActionResult GetTasksByUserId(int UserId)
-        // {
-        //      List<TaskObj> tasks = _dbContext.Tasks
-        //         .Where(t => t.UserId == UserId)
-        //         .Include(t => t.TaskCategories)
-        //         .ThenInclude(tc => tc.Category)
-        //         .ToList();
+    [HttpGet("complete/{id}")]
+    public IActionResult getCompletedTasks(int id)
+    {
+        List<TaskObjDTO> completedTasks= _dbContext.Tasks
+        .Include(t => t.TaskCategories)
+            .ThenInclude(tc => tc.Category )
+        .Where(t => t.CompletedTask && t.UserId ==id ).Select(t => new TaskObjDTO {
+            Id = t.Id,
+            UserId = t.UserId,
+            Title = t.Title,
+            Description = t.Description,
+            TaskCategories = t.TaskCategories.Select(tc => new TaskCategoriesDTO
+            {
+                CategoryId = tc.CategoryId,
+                TaskId = tc.TaskId,
+                Category = new CategoryDTO
+                {
+                    Id = tc.Category.Id,
+                    CategoryName = tc.Category.CategoryName
+                    
+                }
+            }).ToList(),
+            IsImportantTask = t.IsImportantTask,
+            CompletedTask = t.CompletedTask
+        }).ToList();
+        return Ok(completedTasks);
+    }
 
-        //     if (tasks == null || tasks.Count == 0)
-        //     {
-        //         return NotFound("No tasks found for the specified user.");
-        //     }
-
-        //     List<TaskObjDTO> taskDTO = tasks.Select(t => new TaskObjDTO
-        //     {
-        //         Id = t.Id,
-        //         UserId = t.UserId,
-        //         Title = t.Title,
-        //         Description = t.Description,
-        //         Date = t.Date,
-        //         CompletedTask = t.CompletedTask,
-        //         IsImportantTask = t.IsImportantTask,
-        //         TaskCategories = t.TaskCategories.Select(tc => tc.CategoryId).ToList()
-        //     }).ToList();
-
-        //     return Ok(taskDTO);
-        // }
 
    
 

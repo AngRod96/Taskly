@@ -6,6 +6,7 @@ import Register from "./auth/Register";
 import { AllTasks } from "./Tasks/TasksView.jsx";
 import { CreateTask } from "./Tasks/CreateNewtask.jsx";
 import { EditTask } from "./Tasks/EditTask.jsx";
+import { CompletedTasks } from "./Tasks/CompletedTask.jsx";
 
 
 
@@ -45,7 +46,12 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           <AuthorizedRoute loggedInUser={loggedInUser}>
             <EditTask loggedInUser={loggedInUser}/>
           </AuthorizedRoute>}>
-          </Route>
+        </Route>
+        <Route path="/complete" 
+          element={<AuthorizedRoute loggedInUser={loggedInUser}>
+          <CompletedTasks loggedInUser={loggedInUser} />
+          </AuthorizedRoute>}>
+        </Route>
       </Route>
       <Route path="*" element={<p>Whoops, nothing here...</p>} />
     </Routes>

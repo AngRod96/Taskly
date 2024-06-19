@@ -32,7 +32,7 @@ export const AllTasks = ({ loggedInUser }) => {
 
     return (
         
-            <>
+            <main>
             <h1>All Tasks</h1>
             <CardGroup>
             <Row>
@@ -42,7 +42,6 @@ export const AllTasks = ({ loggedInUser }) => {
             ) : (
                    
                         <ul className="new-card">
-                        
         
                         {task.map((task) => (
                             <>
@@ -54,10 +53,10 @@ export const AllTasks = ({ loggedInUser }) => {
                             <p>Important: {task.isImportantTask ? 'Yes' : 'No'}</p>
                                     <p>Date: {new Date(task.date).toLocaleString()}</p>
                                     <div>
-                                        <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
+                                        <button className="delete-btn" onClick={() => handleDelete(task.id)}>🗑️</button>
                                     </div>
                                     <Link to={`/edit-task/${task.id}`}>   
-                                        <button>Edit Task</button>
+                                        <button>Edit 🖊️</button>
                                             </Link>   
                                             </Card>
                                     </Col>
@@ -77,7 +76,7 @@ export const AllTasks = ({ loggedInUser }) => {
                 </Link>      
                 </Row>
                 </CardGroup>
-          </>
+          </main>
 
     );
 }

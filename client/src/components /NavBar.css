@@ -1,0 +1,50 @@
+/* .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.navbar {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.navbar-toggler {
+    align-self: flex-end;
+}
+
+.navbar-brand {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-link {
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+
+button {
+    width: 100%;
+} */
+/* 
+.navbar-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    display: flex;
+    
+  } */
+
