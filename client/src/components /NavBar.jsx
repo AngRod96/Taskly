@@ -20,24 +20,25 @@ export default function NavBar({ loggedInUser, setLoggedInUser}) {
 const toggleNavbar = () => setOpen(!open);
 
 return (
-    <div className="d-flex col flex-column">
-    <Navbar className="d-flex flex-column" color="light" light fixed="true" expand="lg">
-       
-        {loggedInUser ? (
-                <>
-                    
-            <NavbarToggler onClick={toggleNavbar} />
-            <Collapse isOpen={open} navbar>
-                        <Nav className="d-flex flex-column" navbar>
-                        <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+    <div >
+    <Navbar color="light" light fixed="true" expand="lg">
+    <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
         Taskly
         </NavbarBrand>
+        {loggedInUser ? (
+                <>
+            <NavbarToggler onClick={toggleNavbar} />
+            <Collapse isOpen={open} navbar>
+                        <Nav navbar>   
                     <NavItem>
-                        <NavLink tag={RRNavLink} to="/important">Important</NavLink>
+                        <NavLink tag={RRNavLink} to="/create-task">Create Task</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/complete">Completed</NavLink>
                             </NavItem>
+          
+                </Nav>
+            </Collapse>
             <Button
             color="primary"
             onClick={(e) => {
@@ -53,9 +54,6 @@ return (
                         
             Logout
             </Button>
-                </Nav>
-            </Collapse>
-                   
                     
         </>
         ) : (

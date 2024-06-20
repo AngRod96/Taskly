@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getCompletedTasks, deleteTask } from '../../managers/TaskManager.js';
+import { Card, CardBody, CardTitle,CardText,CardGroup, Col, Button } from 'reactstrap';
 
 export const CompletedTasks = ({ loggedInUser }) => {
     const [completedTasks, setCompletedTasks] = useState([]);
@@ -26,20 +27,24 @@ export const CompletedTasks = ({ loggedInUser }) => {
 
     return (
         <div>
-            <h1>Completed Tasks</h1>
-            <ul className="completed-tasks">
-                {completedTasks.map((task) => (
-                    <li key={task.id}>
-                        <h2>{task.title}</h2>
-                        <p>{task.description}</p>
-                         {task.taskCategories.map((c) => {
-                            return(<p> Category:{c.category.categoryName}</p>)
-                        })}
-                        <p>Important: {task.isImportantTask ? 'Yes' : 'No'}</p>
-                        <button onClick={() => handleDelete(task.id)}>Delete</button>
-                    </li>
+      {/* <h1 className="ps-4 mt-4 ">Completed Tasks</h1> */}
+      <CardGroup>
+        {completedTasks.map((task) => (
+          <Col sm="4" key={task.id} className="m-5 mt-4">
+            <Card>
+              <CardBody>
+                <CardTitle tag="h5">{task.title}</CardTitle>
+                <CardText>{task.description}</CardText>
+                {task.taskCategories.map((c, index) => (
+                  <CardText key={index}>Category: {c.category.categoryName}</CardText>
                 ))}
-            </ul>
-        </div>
+                <CardText>Important: {task.isImportantTask ? 'Yes' : 'No'}</CardText>
+                <Button color="danger" onClick={() => handleDelete(task.id)}>Delete</Button>
+              </CardBody>
+            </Card>
+          </Col>
+        ))}
+      </CardGroup>
+    </div>
     );
 };
