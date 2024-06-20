@@ -1,9 +1,9 @@
 .new-card {
     display: flex;
     flex-wrap: wrap;
-    max-width: 800px;
+    max-width: 900px;
+    padding: 20px;
     
- 
 }
 
 

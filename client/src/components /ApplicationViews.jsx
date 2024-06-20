@@ -34,6 +34,12 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="register"
           element={<Register setLoggedInUser={setLoggedInUser} />}
         />
+        {/* <Route path="/profile"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+            <Profile loggedInUser={loggedInUser}/>
+          </AuthorizedRoute>}>
+        </Route> */}
         <Route path="/create-task"
           element={
           <AuthorizedRoute loggedInUser={loggedInUser}>

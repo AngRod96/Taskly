@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createTask } from '../../managers/TaskManager';
 import { getAllCategories } from '../../managers/categoryManager.js';
-import { Label } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Card, CardBody } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 
 export const CreateTask = ({loggedInUser}) => {
@@ -57,55 +57,65 @@ export const CreateTask = ({loggedInUser}) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input
-                    type="text"
-                    id="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <textarea
-                    id="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <p>Pick a category:</p>
-                {categories?.map((c) => (
-                    <label check>
-                        <input type="checkbox" value={c.id}
-                            onChange={() => {
-                            handleCheckboxChange(c.id)
-                        }}
-                        /> {c.categoryName}
-                        
-                    </label>
-                        
-                    
-                ) )}
-            </div>
-            <div>
-            <div>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={isImportant}
-                        onChange={(e) => setIsImportant(e.target.checked)}
-                    />
-                    Important?
-                </label>
-            </div>
-            </div>
-            <button type="submit">Create Task</button>
-        </form>
-    );
+        (
+            <Container className="d-flex justify-content-center align-items-center min-vh-100">
+              <Row className="w-100">
+                <Col sm="12" md="8" lg="6" className="mx-auto">
+                  <Card className="shadow-lg p-3 mb-5 bg-white rounded">
+                    <CardBody>
+                      <Form onSubmit={handleSubmit}>
+                        <FormGroup>
+                          <Label for="title" className="form-label">Title:</Label>
+                          <Input
+                            type="text"
+                            id="title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                          />
+                        </FormGroup>
+                        <FormGroup>
+                          <Label for="description" className="form-label">Description:</Label>
+                          <Input
+                            type="textarea"
+                            id="description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                          />
+                        </FormGroup>
+                        <FormGroup>
+                          <Label className="form-label">Pick a category:</Label>
+                          {categories?.map((c) => (
+                            <FormGroup check inline key={c.id}>
+                              <Label check>
+                                <Input
+                                  type="checkbox"
+                                  value={c.id}
+                                  onChange={() => handleCheckboxChange(c.id)}
+                                />
+                                {c.categoryName}
+                              </Label>
+                            </FormGroup>
+                          ))}
+                        </FormGroup>
+                        <FormGroup check>
+                          <Label check>
+                            <Input
+                              type="checkbox"
+                              checked={isImportant}
+                              onChange={(e) => setIsImportant(e.target.checked)}
+                            />
+                            Important?
+                          </Label>
+                        </FormGroup>
+                        <Button color="primary" type="submit" className="mt-3">Create Task</Button>
+                      </Form>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+    ));
 };
 
