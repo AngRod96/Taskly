@@ -113,7 +113,7 @@ export const EditTask = ({ loggedInUser }) => {
                           Important?
                         </Label>
                       </FormGroup>
-                      <Button color="primary" type="submit">Save Changes</Button>
+                      <Button color="primary" type="submit">Save</Button>
                     </Form>
                   </CardBody>
                 </Card>
