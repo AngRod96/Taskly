@@ -46,7 +46,7 @@ namespace Taskly.Controllers
                     TaskCategories = t.TaskCategories.Select(tc => new TaskCategoriesDTO
                     {
                         CategoryId = tc.CategoryId,
-                        TaskId = tc. TaskId,
+                        TaskId = tc.TaskId,
                         Category = new CategoryDTO
                         {
                             Id = tc.Category.Id,
@@ -128,18 +128,19 @@ namespace Taskly.Controllers
 
             List<TaskCategories> tasksCategoriesToRemove = _dbContext.TaskCategories.Where(t => t.TaskId == id).ToList();
 
-            foreach ( TaskCategories taskCategory in tasksCategoriesToRemove) 
+            foreach (TaskCategories taskCategory in tasksCategoriesToRemove)
             {
                 _dbContext.TaskCategories.Remove(taskCategory);
             }
 
             _dbContext.SaveChanges();
 
-            foreach(int CategoryId in editTask.CategoryIds)
+            foreach (int CategoryId in editTask.CategoryIds)
             {
                 _dbContext.TaskCategories.Add(new TaskCategories()
                 {
-                    TaskId = taskToEdit.Id, CategoryId = CategoryId
+                    TaskId = taskToEdit.Id,
+                    CategoryId = CategoryId
                 });
             }
 
@@ -172,7 +173,8 @@ namespace Taskly.Controllers
                     Date = DateTime.Now,
                     IsImportantTask = taskById.IsImportantTask,
                     UserId = taskById.UserId,
-                    TaskCategories = taskById.TaskCategories.Select(tc => new TaskCategoriesDTO{
+                    TaskCategories = taskById.TaskCategories.Select(tc => new TaskCategoriesDTO
+                    {
                         CategoryId = tc.CategoryId,
                         TaskId = tc.TaskId,
                         Category = new CategoryDTO
@@ -187,51 +189,36 @@ namespace Taskly.Controllers
         }
 
 
-    [HttpGet("complete/{id}")]
-    public IActionResult getCompletedTasks(int id)
-    {
-        List<TaskObjDTO> completedTasks= _dbContext.Tasks
-        .Include(t => t.TaskCategories)
-            .ThenInclude(tc => tc.Category )
-        .Where(t => t.CompletedTask && t.UserId ==id ).Select(t => new TaskObjDTO {
-            Id = t.Id,
-            UserId = t.UserId,
-            Title = t.Title,
-            Description = t.Description,
-            TaskCategories = t.TaskCategories.Select(tc => new TaskCategoriesDTO
+        [HttpGet("complete/{id}")]
+        public IActionResult getCompletedTasks(int id)
+        {
+            List<TaskObjDTO> completedTasks = _dbContext.Tasks
+            .Include(t => t.TaskCategories)
+                .ThenInclude(tc => tc.Category)
+            .Where(t => t.CompletedTask && t.UserId == id).Select(t => new TaskObjDTO
             {
-                CategoryId = tc.CategoryId,
-                TaskId = tc.TaskId,
-                Category = new CategoryDTO
+                Id = t.Id,
+                UserId = t.UserId,
+                Title = t.Title,
+                Description = t.Description,
+                TaskCategories = t.TaskCategories.Select(tc => new TaskCategoriesDTO
                 {
-                    Id = tc.Category.Id,
-                    CategoryName = tc.Category.CategoryName
-                    
-                }
-            }).ToList(),
-            IsImportantTask = t.IsImportantTask,
-            CompletedTask = t.CompletedTask
-        }).ToList();
-        return Ok(completedTasks);
-    }
+                    CategoryId = tc.CategoryId,
+                    TaskId = tc.TaskId,
+                    Category = new CategoryDTO
+                    {
+                        Id = tc.Category.Id,
+                        CategoryName = tc.Category.CategoryName
 
-        // [HttpPut("completed-status/{id}")]
-        // public IActionResult completedStatus(int id, [FromForm] bool completedTasks)
-        // {
-        //     TaskObj task = _dbContext.Tasks.FirstOrDefault(t => t.Id == id);
-        //     if (task == null)
-        //     {
-        //         return NotFound();
-        //     }
-
-        //     task.CompletedTask = completedTasks;
-        //     _dbContext.SaveChanges();
-
-        //     return Ok(task);
-        // }
-
+                    }
+                }).ToList(),
+                IsImportantTask = t.IsImportantTask,
+                CompletedTask = t.CompletedTask
+            }).ToList();
+            return Ok(completedTasks);
+        }
 
     }
-
-
 }
+
+

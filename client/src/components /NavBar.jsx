@@ -30,9 +30,9 @@ return (
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
                         <Nav navbar> 
-                    {/* <NavItem>
+                    <NavItem>
                         <NavLink tag={RRNavLink} to="/user-profile">Profile</NavLink>
-                    </NavItem>     */}
+                    </NavItem>    
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/create-task">Create Task</NavLink>
                     </NavItem>
