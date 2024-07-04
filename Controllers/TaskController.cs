@@ -215,8 +215,20 @@ namespace Taskly.Controllers
         return Ok(completedTasks);
     }
 
+        // [HttpPut("completed-status/{id}")]
+        // public IActionResult completedStatus(int id, [FromForm] bool completedTasks)
+        // {
+        //     TaskObj task = _dbContext.Tasks.FirstOrDefault(t => t.Id == id);
+        //     if (task == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-   
+        //     task.CompletedTask = completedTasks;
+        //     _dbContext.SaveChanges();
+
+        //     return Ok(task);
+        // }
 
 
     }

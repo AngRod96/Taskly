@@ -11,6 +11,7 @@ import { CompletedTasks } from "./Tasks/CompletedTask.jsx";
 
 
 
+
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
     <Routes>
@@ -34,10 +35,10 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           path="register"
           element={<Register setLoggedInUser={setLoggedInUser} />}
         />
-        {/* <Route path="/profile"
+        {/* <Route path="/user-profile"
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
-            <Profile loggedInUser={loggedInUser}/>
+            <ProfileView loggedInUser={loggedInUser}/>
           </AuthorizedRoute>}>
         </Route> */}
         <Route path="/create-task"
