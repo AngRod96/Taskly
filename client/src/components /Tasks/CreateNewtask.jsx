@@ -58,24 +58,26 @@ export const CreateTask = ({loggedInUser}) => {
 
     return (
         (
-            <Container className="d-flex justify-content-center align-items-center min-vh-100">
+            <Container className="d-flex justify-content-center align-items-center min-vh-100" >
               <Row className="w-100">
                 <Col sm="12" md="8" lg="6" className="mx-auto">
                   <Card className="shadow-lg p-3 mb-5 bg-white rounded">
                     <CardBody>
                       <Form onSubmit={handleSubmit}>
                         <FormGroup>
-                          <Label for="title" className="form-label">Title:</Label>
+                                        <Label style={{ color: "black" }} for="title">Title:</Label>
                           <Input
                             type="text"
                             id="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required
+                                            
+                            
                           />
                         </FormGroup>
                         <FormGroup>
-                          <Label for="description" className="form-label">Description:</Label>
+                          <Label style={{ color: "black" }} for="description" className="form-label">Description:</Label>
                           <Input
                             type="textarea"
                             id="description"
@@ -84,11 +86,11 @@ export const CreateTask = ({loggedInUser}) => {
                             required
                           />
                         </FormGroup>
-                        <FormGroup>
-                          <Label className="form-label">Pick a category:</Label>
+                        <FormGroup check>
+                                        <Label style={{ color: "black" }} className="form-label">Pick a category:</Label>
                           {categories?.map((c) => (
                             <FormGroup check inline key={c.id}>
-                              <Label check>
+                              <Label style={{ color: "black" }} check>
                                 <Input
                                   type="checkbox"
                                   value={c.id}
@@ -100,8 +102,8 @@ export const CreateTask = ({loggedInUser}) => {
                           ))}
                         </FormGroup>
                         <FormGroup check>
-                          <Label check>
-                            <Input
+                          <Label style={{ color: "black" }}check>
+                            <Input style={{ color: "black" }}
                               type="checkbox"
                               checked={isImportant}
                               onChange={(e) => setIsImportant(e.target.checked)}

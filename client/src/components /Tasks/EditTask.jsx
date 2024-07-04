@@ -68,7 +68,7 @@ export const EditTask = ({ loggedInUser }) => {
                     <CardTitle tag="h2">Edit Task</CardTitle>
                     <Form onSubmit={handleSubmit}>
                       <FormGroup>
-                        <Label htmlFor="title">Title</Label>
+                        <Label style={{ color: "black" }} htmlFor="title">Title</Label>
                         <Input 
                           type="text"
                           id="title"
@@ -78,7 +78,7 @@ export const EditTask = ({ loggedInUser }) => {
                         />
                       </FormGroup>
                       <FormGroup>
-                        <Label htmlFor="description">Description</Label>
+                        <Label style={{ color: "black" }} htmlFor="description">Description</Label>
                         <Input 
                           type="textarea"
                           id="description"
@@ -88,10 +88,10 @@ export const EditTask = ({ loggedInUser }) => {
                         />
                       </FormGroup>
                       <FormGroup>
-                        <Label>Pick a category:</Label>
+                        <Label style={{ color: "black" }}>Pick a category:</Label>
                         {categories.map((c) => (
                           <FormGroup check inline key={c.id}>
-                            <Label check>
+                            <Label style={{ color: "black" }}check>
                               <Input 
                                 type="checkbox"
                                 value={c.id}
@@ -104,7 +104,7 @@ export const EditTask = ({ loggedInUser }) => {
                         ))}
                       </FormGroup>
                       <FormGroup check>
-                        <Label check>
+                        <Label style={{ color: "black" }}check>
                           <Input 
                             type="checkbox"
                             checked={isImportant}

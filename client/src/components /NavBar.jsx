@@ -21,15 +21,18 @@ const toggleNavbar = () => setOpen(!open);
 
 return (
     <div >
-    <Navbar color="light" light fixed="true" expand="lg">
-    <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-        Taskly
+    <Navbar light fixed="true" expand="lg">
+    <NavbarBrand light className="mr-auto" tag={RRNavLink} to="/">
+        TASKLY
         </NavbarBrand>
         {loggedInUser ? (
                 <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-                        <Nav navbar>   
+                        <Nav navbar> 
+                    {/* <NavItem>
+                        <NavLink tag={RRNavLink} to="/user-profile">Profile</NavLink>
+                    </NavItem>     */}
                     <NavItem>
                         <NavLink tag={RRNavLink} to="/create-task">Create Task</NavLink>
                     </NavItem>

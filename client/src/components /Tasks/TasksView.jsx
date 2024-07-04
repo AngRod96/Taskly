@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { deleteTask, getAllTasks } from "../../managers/TaskManager.js"
+import { deleteTask, getAllTasks, updateTask } from "../../managers/TaskManager.js"
 import { Link } from "react-router-dom"
-import { Card, CardGroup, CardText, CardTitle, Col, Row } from "reactstrap"
+import { Button, Card, CardGroup, CardText, CardTitle, Col, Row } from "reactstrap"
 import "./task.css"
 
 
@@ -14,6 +14,7 @@ export const AllTasks = ({ loggedInUser }) => {
     {
         getAllTasks(loggedInUser.id ).then(setTasks);
     }, [])
+
 
     const handleDelete = async (taskId) => {
         if (window.confirm("Are you sure you want to delete this task?")) {
@@ -33,7 +34,7 @@ export const AllTasks = ({ loggedInUser }) => {
     return (
         
             <div>
-            <h1 className='ps-4 mt-4 text-body-secondary'>All Tasks</h1>
+            <h1 className='ps-4 mt-4 '>All Tasks</h1>
             <CardGroup>
             <Row>
                 <div>
@@ -48,16 +49,18 @@ export const AllTasks = ({ loggedInUser }) => {
                                     <Col sm="4" key={task.id}>
                                         <Card className="p-2 m-2 shadow-lg">
                             <CardTitle tag="h5">{task.title}</CardTitle>
-                            <CardText>{task.description}</CardText>
+                            <CardText className="mt-2">{task.description}</CardText>
                             <p>Completed: {task.completedTask ? 'yes' : 'No'}</p>
                             <p>Important: {task.isImportantTask ? 'Yes' : 'No'}</p>
-                                    {/* <p>Date: {new Date(task.date).toLocaleString()}</p> */}
-                                    <div>
+                                        {/* <p>Date: {new Date(task.date).toLocaleString()}</p> */}
+                                    <div className="right-align">
                                         <button className="btn btn-outline-secondary p-1 m-1" onClick={() => handleDelete(task.id)}>🗑️</button>
                                     </div>
-                                    <Link to={`/edit-task/${task.id}`}>   
-                                        <button className="btn btn-outline-secondary p-1 m-1" >🖊️</button>
-                                            </Link>   
+                                        <Link to={`/edit-task/${task.id}`}> 
+                                        <div className="right-align">       
+                                            <button className="btn btn-outline-secondary p-1 m-1" >🖊️</button>
+                                        </div>       
+                                        </Link>   
                                             </Card>
                                     </Col>
                         
