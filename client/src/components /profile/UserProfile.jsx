@@ -27,7 +27,6 @@
 //               <CardTitle tag="h3">Profile</CardTitle>
 //               <CardText><strong>First Name:</strong> {userData.FirstName}</CardText>
 //               <CardText><strong>Last Name:</strong> {userData.LastName}</CardText>
-//               <CardText><strong>Address:</strong> {userData.Adress}</CardText>
 //             </CardBody>
 //           </Card>
 //         </Col>
