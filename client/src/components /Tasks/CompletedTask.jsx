@@ -27,10 +27,10 @@ export const CompletedTasks = ({ loggedInUser }) => {
 
     return (
         <div>
-      {/* <h1 className="ps-4 mt-4 ">Completed Tasks</h1> */}
+      <h1 className="ps-4 mt-4 ">Completed Tasks</h1>
       <CardGroup>
         {completedTasks.map((task) => (
-          <Col sm="4" key={task.id} className="m-5 mt-4">
+          <Col sm="4" key={task.id} className="m-4 mt-5">
             <Card>
               <CardBody>
                 <CardTitle tag="h5">{task.title}</CardTitle>
